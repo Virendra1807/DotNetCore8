@@ -1,3 +1,5 @@
+using WebAppMVC;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.   Important
@@ -31,11 +33,25 @@ app.UseAuthorization();
 app.MapControllers();
 
 
-app.Map("/Viren", ()=> "General Map Method");
-app.MapGet("/Viren", ()=> "MapGet Method");
+//app.Map("/Viren", ()=> "General Map Method");
+
+app.MapGet("/Viren", ()=>
+{
+    var a = "Hello ";
+    var b = "World !";
+    String res = "MapGet Method " + a + b;
+    return res;
+});
+
 app.MapPost("/Viren", ()=> "MapPost Method");
 app.MapPut("/Viren", ()=> "MapPut Method");
 app.MapDelete("/Viren", ()=> "MapDelete Method");
+
+
+
+app.MapGet("/users", UserEndpoints.GetUsers);
+
+
 
 
 app.Run();
