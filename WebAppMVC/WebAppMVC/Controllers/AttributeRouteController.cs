@@ -4,11 +4,17 @@ namespace WebAppMVC.Controllers
 {
     public class AttributeRouteController : Controller
     {
-        [Route("")]
+        [Route("")] 
         [Route("Home")]
         [Route("Home/Index")]
         public IActionResult Index()
         {
+            ViewData["Data1"] = "Viren Mali";
+            ViewData["Data2"] = 23;
+            ViewData["Data3"] = DateTime.Now.ToLongDateString();
+             
+            String[] arr = { "Viren", "Goku", "Mohan" };
+            ViewData["Data4"] = arr;
             return View();
         }
 
@@ -18,6 +24,7 @@ namespace WebAppMVC.Controllers
         {
             return View();
         }
+
 
         [Route("Details/{id?}")]
         public int Details(int? id) // Nullable handling
